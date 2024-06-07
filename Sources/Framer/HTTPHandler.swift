@@ -34,6 +34,7 @@ public struct HTTPWSHeader {
     static let connectionName     = "Connection"
     static let connectionValue    = "Upgrade"
     static let protocolName       = "Sec-WebSocket-Protocol"
+	static let protocolValue      = "v12.stomp"
     static let versionName        = "Sec-WebSocket-Version"
     static let versionValue       = "13"
     static let extensionName      = "Sec-WebSocket-Extensions"
@@ -66,6 +67,7 @@ public struct HTTPWSHeader {
         req.setValue(HTTPWSHeader.connectionValue, forHTTPHeaderField: HTTPWSHeader.connectionName)
         req.setValue(HTTPWSHeader.versionValue, forHTTPHeaderField: HTTPWSHeader.versionName)
         req.setValue(secKeyValue, forHTTPHeaderField: HTTPWSHeader.keyName)
+		req.setValue(HTTPWSHeader.protocolValue, forHTTPHeaderField: HTTPWSHeader.protocolName)
         
 		if req.allHTTPHeaderFields?["Cookie"] == nil {
             if let cookies = HTTPCookieStorage.shared.cookies(for: url), !cookies.isEmpty {
